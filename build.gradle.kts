@@ -20,3 +20,7 @@ dependencies {
     implementation("io.ktor:ktor-client-apache:${Konnekt.ktorVersion}")
     implementation("io.ktor:ktor-client-logging-jvm:${Konnekt.ktorVersion}")
 }
+
+kotlin {
+    sourceSets["main"].kotlin.srcDir("build/generated/source/kapt/")
+}
