@@ -1,9 +1,5 @@
-import konnekt.gradle.Konnekt
-
 plugins {
-    kotlin("jvm") version "1.4.10"
-//    id("io.github.koperagen.greeting") version "1.4.10-SNAPSHOT"
-    id("io.github.koperagen.konnekt") version "1.4.10-SNAPSHOT"
+    kotlin("jvm") version "1.4.21"
 }
 
 group = "io.github.koperagen"
@@ -17,10 +13,14 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("io.github.koperagen:prelude-jvm:1.4.10-SNAPSHOT")
-    implementation("io.ktor:ktor-client-apache:${Konnekt.ktorVersion}")
-    implementation("io.ktor:ktor-client-logging-jvm:${Konnekt.ktorVersion}")
+    implementation("io.ktor:ktor-client-apache:1.4.1")
+    implementation("io.ktor:ktor-client-logging-jvm:1.4.1")
 }
 
 kotlin {
     sourceSets["main"].kotlin.srcDir("build/generated/source/kapt/")
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.freeCompilerArgs += listOf("/путь/к/локальному/файлу/плагин.jar")
 }
